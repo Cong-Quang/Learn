@@ -51,7 +51,6 @@ namespace Tools
         }
         static void SLdatabase(int if1, int if2)
         {
-            SystemChrom dt = new SystemChrom();
             string linkdata = @"D:\Nghề";
             string data = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + linkdata + @"\Database.accdb";
             try
@@ -68,7 +67,12 @@ namespace Tools
                     string mk = reader.GetString(1);
                     Thread t = new Thread(() =>
                     {
-                        
+                        SystemChrom dt = new SystemChrom();
+                        dt.Usename = tk; dt.Password = mk;
+                        dt.login();
+
+
+
                     }); t.Start();
                 }
                 con.Close();

@@ -11,7 +11,6 @@ namespace Tools
     internal class SystemChrom
     {
         IWebDriver driver;
-
         string usename;
         string password;
        
@@ -22,25 +21,7 @@ namespace Tools
         {
             try
             {
-                switch (if1)
-                {
-                    case 1:
-                       
-                    case 2:
-                        switch (if2)
-                        {
-                            case 1:
-                                while (true)
-                                {
-                                    sleept();
-                                }
-                            default:
-                                break;
-                        }
-                        break;
-                    default:
-                        break;
-                }
+                
             }
             catch (Exception)
             {
@@ -48,16 +29,15 @@ namespace Tools
             }       
         }
 
-        public void login(string usename, string password)
+        public void login()
         {
+            var driverService = ChromeDriverService.CreateDefaultService();
+            driverService.HideCommandPromptWindow = true;
+            driver = new ChromeDriver(driverService, new ChromeOptions());
+            driver.Manage().Window.Size = new Size(220, 480);
+            driver.Manage().Window.Position = new Point(0, 0);
             try
             {
-                var driverService = ChromeDriverService.CreateDefaultService();
-                driverService.HideCommandPromptWindow = true;
-                driver = new ChromeDriver(driverService, new ChromeOptions());
-                driver.Manage().Window.Size = new Size(220, 480);
-                driver.Manage().Window.Position = new Point(0, 0);
-
                 driver.Navigate().GoToUrl("https://www.facebook.com/");
                 driver.FindElement(By.Id("email")).SendKeys(usename);
                 driver.FindElement(By.Id("pass")).SendKeys(password + Keys.Return);
@@ -71,7 +51,8 @@ namespace Tools
 
         public void AcctionChrom()
         {
-            Actions actions = new Actions(driver);
+
+           /* Actions actions = new Actions(driver);
             try
             {
                 actions.SendKeys(Keys.Escape);
@@ -85,11 +66,11 @@ namespace Tools
             {
 
                 throw;
-            }
+            }*/
         }
         public void QuitChrom()
         {
-            driver.Quit();
+           // driver.Quit();
         }
 
         private void sleept()
