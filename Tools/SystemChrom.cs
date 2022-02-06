@@ -100,7 +100,7 @@ namespace Tools
             {
                 if (QuitCH == false)
                 {
-                    driver.Quit();
+                    driver.Close();
                 }
                 break ;
             }

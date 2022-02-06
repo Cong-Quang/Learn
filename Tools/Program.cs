@@ -29,13 +29,11 @@ namespace Tools
                     if (if1 == 1)
                     {
                         SLdatabase(1,0);
-                       
                     }
                     if (if1 ==2)
                     {
                         int if2 = Convert.ToInt32(Console.ReadLine());
                     }
-                    Console.ReadLine();
                     systemx();
                 }
                 catch (Exception)
@@ -62,7 +60,6 @@ namespace Tools
                 OleDbDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-
                     string tk = reader.GetString(0);
                     string mk = reader.GetString(1);
 
@@ -90,8 +87,10 @@ namespace Tools
                 }
                 con.Close();
                 Console.Clear();
-                Console.Write("Enter để thoát ngẫu nhiên ( 1 hoặc nhiều ) TAP\n\t->");
-                t1 = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter để thoát all\n\t-> ");
+                Console.ReadLine();
+                t1 = 1;
+                
             }
             catch (Exception)
             {
