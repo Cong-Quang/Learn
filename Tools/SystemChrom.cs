@@ -54,15 +54,15 @@ namespace Tools
            Actions actions = new Actions(driver);
             try
             {
-                /*
-                 if1 |
-                     | if2 |
-                     |     | if3 |
-                           |     |
-                                 |
-                 */
                 switch (Cif1)
                 {
+                    /*
+                     * if1 |     |
+                     *     | if2 |     |
+                     *     |     | if3 |
+                     *           |     |
+                     *                 |
+                     */
                     case 1:
                         if (Cif1 == 1)
                         {
@@ -111,7 +111,7 @@ namespace Tools
                 Console.Clear();
             }
         }
-        public void QuitChrom() // check colse
+        public void QuitChrom() // check close
         {
             while (QuitCH == false)
             {
