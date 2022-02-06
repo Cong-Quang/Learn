@@ -10,41 +10,22 @@ namespace Tools
 {
     internal class SystemChrom
     {
-        public void kq(string usename, string password,int if1,int if2)
+        IWebDriver driver;
+
+        string usename;
+        string password;
+       
+        public string Usename { get => usename; set => usename = value; }
+        public string Password { get => password; set => password = value; }
+
+        public void kq(int if1,int if2)
         {
-            IWebDriver driver;
             try
             {
-                var driverService = ChromeDriverService.CreateDefaultService();
-                driverService.HideCommandPromptWindow = true;
-                driver = new ChromeDriver(driverService, new ChromeOptions());
-                driver.Manage().Window.Size = new Size(220, 480);
-                driver.Manage().Window.Position = new Point(0, 0);
-
-                driver.Navigate().GoToUrl("https://www.facebook.com/");
-                driver.FindElement(By.Id("email")).SendKeys(usename);
-                driver.FindElement(By.Id("pass")).SendKeys(password + Keys.Return);
-
-                Actions actions = new Actions(driver);
-                Thread.Sleep(TimeSpan.FromSeconds(1));
-                actions.SendKeys(Keys.Escape);
-
                 switch (if1)
                 {
                     case 1:
-                        Console.Clear();
-                        Console.BackgroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Running");
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        Console.WriteLine("-> Enter để thoát");
-                        while (true)
-                        {
-                           actions
-                                .KeyDown(Keys.Down)
-                                .Build()
-                                .Perform();
-                            sleept();
-                        }
+                       
                     case 2:
                         switch (if2)
                         {
@@ -53,7 +34,6 @@ namespace Tools
                                 {
                                     sleept();
                                 }
-
                             default:
                                 break;
                         }
@@ -67,6 +47,51 @@ namespace Tools
                 Program program = new Program();
             }       
         }
+
+        public void login(string usename, string password)
+        {
+            try
+            {
+                var driverService = ChromeDriverService.CreateDefaultService();
+                driverService.HideCommandPromptWindow = true;
+                driver = new ChromeDriver(driverService, new ChromeOptions());
+                driver.Manage().Window.Size = new Size(220, 480);
+                driver.Manage().Window.Position = new Point(0, 0);
+
+                driver.Navigate().GoToUrl("https://www.facebook.com/");
+                driver.FindElement(By.Id("email")).SendKeys(usename);
+                driver.FindElement(By.Id("pass")).SendKeys(password + Keys.Return);
+            }
+            catch (Exception)
+            {
+                Console.Clear();
+                Console.WriteLine("Lỗi kết nối");
+            }
+        }
+
+        public void AcctionChrom()
+        {
+            Actions actions = new Actions(driver);
+            try
+            {
+                actions.SendKeys(Keys.Escape);
+                actions
+                    .KeyDown(Keys.Down)
+                    .Build()
+                    .Perform();
+                sleept();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public void QuitChrom()
+        {
+            driver.Quit();
+        }
+
         private void sleept()
         {
              Random rnd = new Random();
