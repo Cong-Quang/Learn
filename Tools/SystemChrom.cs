@@ -19,17 +19,23 @@ namespace Tools
                 var driver = new ChromeDriver(driverService, new ChromeOptions());
                 driver.Manage().Window.Size = new Size(220, 480);
                 driver.Manage().Window.Position = new Point(0, 0);
+
                 driver.Navigate().GoToUrl("https://www.facebook.com/");
                 driver.FindElement(By.Id("email")).SendKeys(usename);
                 driver.FindElement(By.Id("pass")).SendKeys(password + Keys.Return);
+
                 Actions actions = new Actions(driver);
+                Thread.Sleep(TimeSpan.FromSeconds(1));
+                actions.SendKeys(Keys.Escape);
+
                 switch (if1)
                 {
                     case 1:
+                        Console.Clear();
                         Console.BackgroundColor = ConsoleColor.Red;
-                        Console.WriteLine("đang chạy");
+                        Console.WriteLine("Running");
                         Console.BackgroundColor = ConsoleColor.Black;
-                       
+                        Console.WriteLine("-> Enter để thoát");
                         while (true)
                         {
                             actions
@@ -66,7 +72,6 @@ namespace Tools
             Random rnd = new Random();
             int trd = rnd.Next(2100);
             Thread.Sleep(trd);
-            
         }
 
     }
