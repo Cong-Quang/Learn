@@ -9,11 +9,7 @@ namespace Tools
 {
     internal class Form
     {
-        int if1;
-        int if2;
-
-        public int If1 { get => if1; set => if1 = value; }
-        public int If2 { get => if2; set => if2 = value; }
+       
         public void ht()
         {
 
@@ -43,7 +39,7 @@ namespace Tools
                     Console.WriteLine("| 5:                              |");
                     Console.WriteLine("| 6:                              |");
                     Console.WriteLine("-----------------------------------");
-                    Console.Write("\t->");
+                    Console.Write("\t-> ");
                     switch (if2)
                     {
                         case 1:

@@ -15,8 +15,8 @@ namespace Tools
         {
             Console.OutputEncoding = Encoding.UTF8;
             Console.SetWindowSize(35, 10);
-            SLdatabase();
-            //  systemx();
+           
+            systemx();
             void systemx()
             {
                 Form form = new Form();
@@ -24,12 +24,17 @@ namespace Tools
                 {
                     form.ifd(1, 0);
                     int ifp1 = Convert.ToInt32(Console.ReadLine());
-                    form.ifd(ifp1, 0);
-
+                    
+                    if (ifp1 == 1)
+                    {
+                        SLdatabase(ifp1, 0);
+                    }
                     if (ifp1 == 2)
                     {
+                        form.ifd(ifp1, 0);
                         int ifp2 = Convert.ToInt32(Console.ReadLine());
-                        form.ifd(ifp1, ifp2);
+                        
+                        SLdatabase(ifp1, ifp2);
                     }
 
                     Console.ReadLine();
@@ -44,7 +49,7 @@ namespace Tools
             }
 
         }
-        static void SLdatabase()
+        static void SLdatabase(int if1, int if2)
         {
             SystemChrom dt = new SystemChrom();
             string linkdata = @"D:\Nghề";
@@ -63,9 +68,8 @@ namespace Tools
                     string mk = reader.GetString(1);
                     Thread t = new Thread(() =>
                     {
-                        dt.If1 = 1;
-                        dt.If2 = 1;
-                        dt.kq(tk, mk);
+                        
+                        dt.kq(tk, mk,if1,if2);
 
                     }); t.Start();
                 }
