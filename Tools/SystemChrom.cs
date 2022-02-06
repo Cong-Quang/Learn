@@ -74,7 +74,7 @@ namespace Tools
             int rd = (trd1 + trd2) / 2;
             if (rd  < 500)
             {
-                Console.WriteLine(rd + "Sắp có lỗi");
+                 rd += 500;
             }
             Thread.Sleep(rd);
         }
