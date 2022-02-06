@@ -74,7 +74,7 @@ namespace Tools
             int trd2 = rnd.Next(2000);
             int trd3 = rnd.Next(10);
             
-            int rd = (trd1 + trd2)/tr3
+            int rd = (trd1 + trd2)/trd3;
             Thread.Sleep(rd);
         }
 
