@@ -4,6 +4,7 @@ using OpenQA.Selenium.Interactions;
 using System.Drawing;
 using System.Threading;
 using System;
+using NUnit.Framework;
 
 namespace Tools
 
@@ -11,30 +12,18 @@ namespace Tools
     internal class SystemChrom
     {
         IWebDriver driver;
+
         string usename;
         string password;
+        bool QuitCH = true;
+        int Cif1;
+        int Cif2;
        
         public string Usename { get => usename; set => usename = value; }
         public string Password { get => password; set => password = value; }
-
-        public void kq(int if1,int if2)
-        {
-            try
-            {
-                switch (if1)
-                {
-                    case 1:
-                        AcctionChrom();
-                        break;
-                    default:
-                        break;
-                }
-            }
-            catch (Exception)
-            {
-                Program program = new Program();
-            }       
-        }
+        public int Cif11 { get => Cif1; set => Cif1 = value; }
+        public int Cif21 { get => Cif2; set => Cif2 = value; }
+        public bool QuitCH1 { get => QuitCH; set => QuitCH = value; }
 
         public void login()
         {
@@ -62,25 +51,60 @@ namespace Tools
            Actions actions = new Actions(driver);
             try
             {
-                actions.SendKeys(Keys.Escape);
-                while (true)
+                switch (Cif1)
                 {
-                    actions
-                        .KeyDown(Keys.Down)
-                        .Build()
-                        .Perform();
-                    sleept();
-
+                    case 1:
+                        if (Cif1 == 1)
+                        {
+                            actions.SendKeys(Keys.Escape);
+                            do
+                            {
+                                actions
+                                    .KeyDown(Keys.Down)
+                                    .Build()
+                                    .Perform();
+                                sleept();
+                            } while (QuitCH == true);
+                        }
+                        break;
+                        
+                    //////////////////////////////////////////////////
+                    case 2:
+                        switch (Cif2)
+                        {
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    /////////////////////////////////////////////////
+                    case 3:
+                        
+                        break;
+                    default:
+                        Console.WriteLine("Vui lòng nhập đúng");
+                        break;
                 }
             }
             catch (Exception)
             {
-                throw;
+                Console.Clear();
             }
         }
         public void QuitChrom()
         {
-           driver.Quit();
+            while (QuitCH == false)
+            {
+                if (QuitCH == false)
+                {
+                    driver.Quit();
+                }
+                break ;
+            }
+
         }
 
         private void sleept()

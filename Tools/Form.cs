@@ -15,7 +15,7 @@ namespace Tools
 
             Console.WriteLine("Form1");
         }
-        public void ifd(int if1, int if2)
+        public void show(int if1, int if2)
         {
             Console.Title = "Tools";
             switch (if1)

@@ -20,29 +20,27 @@ namespace Tools
             void systemx()
             {
                 Form form = new Form();
+                form.show(1,0);
+
                 try
                 {
-                    form.ifd(1, 0);
-                    int ifp1 = Convert.ToInt32(Console.ReadLine());
-                    
-                    if (ifp1 == 1)
-                    {
-                        SLdatabase(ifp1, 0);
-                    }
-                    if (ifp1 == 2)
-                    {
-                        form.ifd(ifp1, 0);
-                        int ifp2 = Convert.ToInt32(Console.ReadLine());
-                        
-                        SLdatabase(ifp1, ifp2);
-                    }
+                    int if1 = Convert.ToInt32(Console.ReadLine());
 
+                    if (if1 == 1)
+                    {
+                        SLdatabase(1,0);
+                       
+                    }
+                    if (if1 ==2)
+                    {
+                        int if2 = Convert.ToInt32(Console.ReadLine());
+                    }
                     Console.ReadLine();
                     systemx();
                 }
                 catch (Exception)
                 {
-                    form.ifd(10, 0);
+                    form.show(10, 0);
                     Console.ReadLine();
                     systemx();
                 }
@@ -51,6 +49,7 @@ namespace Tools
         }
         static void SLdatabase(int if1, int if2)
         {
+            int t1 = 0;
             string linkdata = @"D:\Nghề";
             string data = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + linkdata + @"\Database.accdb";
             try
@@ -63,17 +62,36 @@ namespace Tools
                 OleDbDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
+
                     string tk = reader.GetString(0);
                     string mk = reader.GetString(1);
+
                     Thread t = new Thread(() =>
                     {
                         SystemChrom dt = new SystemChrom();
-                        dt.Usename = tk; dt.Password = mk;
-                        dt.login();
-                        dt.kq(1,0);
+                        Thread y2 = new Thread(() =>
+                        {
+                            dt.Usename = tk; dt.Password = mk;
+                            dt.login();
+                            dt.Cif11 = if1; dt.Cif21 = if2;
+                            dt.AcctionChrom();
+                        });
+                        y2.Start();
+                        while (true)
+                        {
+                            if (t1 == 1)
+                            {
+                                dt.QuitCH1 = false;
+                                dt.QuitChrom();
+                            }
+                        }
                     }); t.Start();
+
                 }
                 con.Close();
+                Console.Clear();
+                Console.Write("Enter để thoát ngẫu nhiên ( 1 hoặc nhiều ) TAP\n\t->");
+                t1 = Convert.ToInt32(Console.ReadLine());
             }
             catch (Exception)
             {
