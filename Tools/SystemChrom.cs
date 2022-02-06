@@ -74,9 +74,8 @@ namespace Tools
             int rd = (trd1 + trd2) / 2;
             if (rd  < 500)
             {
-                Console.WriteLine(rd+"-------------");
+                rd += 500;
             }
-            Console.WriteLine(rd);
             Thread.Sleep(rd);
         }
 
