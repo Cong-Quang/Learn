@@ -59,11 +59,18 @@ namespace Tools
                             actions.SendKeys(Keys.Escape);
                             do
                             {
-                                actions
+                                try
+                                {
+                                    actions
                                     .KeyDown(Keys.Down)
                                     .Build()
                                     .Perform();
-                                sleept();
+                                    sleept();
+                                }
+                                catch (Exception)
+                                {
+
+                                }
                             } while (QuitCH == true);
                         }
                         break;
@@ -98,13 +105,9 @@ namespace Tools
         {
             while (QuitCH == false)
             {
-                if (QuitCH == false)
-                {
-                    driver.Close();
-                }
-                break ;
+                driver.Close();
+                break;
             }
-
         }
 
         private void sleept()

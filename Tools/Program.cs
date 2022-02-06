@@ -72,6 +72,7 @@ namespace Tools
                             dt.login();
                             dt.Cif11 = if1; dt.Cif21 = if2;
                             dt.AcctionChrom();
+                            
                         });
                         y2.Start();
                         while (true)
@@ -80,6 +81,7 @@ namespace Tools
                             {
                                 dt.QuitCH1 = false;
                                 dt.QuitChrom();
+                                t1 = 0;
                             }
                         }
                     }); t.Start();
