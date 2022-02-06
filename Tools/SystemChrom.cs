@@ -69,10 +69,13 @@ namespace Tools
         private void sleept()
         {
             Random rnd = new Random();
-            int trd1 = rnd.Next(5100);
-            int trd2 = rnd.Next(1200);
-            Console.WriteLine((trd1 + trd2) / 2);
-            Thread.Sleep((trd1+trd2)/2);
+            
+            int trd1 = rnd.Next(10000);
+            int trd2 = rnd.Next(2000);
+            int trd3 = rnd.Next(10);
+            
+            int rd = (trd1 + trd2)/tr3
+            Thread.Sleep(rd);
         }
 
     }
