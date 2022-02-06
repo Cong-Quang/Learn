@@ -14,7 +14,7 @@ namespace Tools
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8; // VietNamese
-            Console.SetWindowSize(35, 10); // set size
+            Console.SetWindowSize(35, 10); // set console size
            
             systemx();
             void systemx()
