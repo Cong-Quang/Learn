@@ -27,13 +27,16 @@ namespace Tools
 
         public void login()
         {
+            //open chrom
             var driverService = ChromeDriverService.CreateDefaultService();
             driverService.HideCommandPromptWindow = true;
             driver = new ChromeDriver(driverService, new ChromeOptions());
+            
+            //set size and set position
             driver.Manage().Window.Size = new Size(220, 480);
             driver.Manage().Window.Position = new Point(0, 0);
             try
-            {
+            {   //login
                 driver.Navigate().GoToUrl("https://www.facebook.com/");
                 driver.FindElement(By.Id("email")).SendKeys(usename);
                 driver.FindElement(By.Id("pass")).SendKeys(password + Keys.Return);
@@ -51,6 +54,13 @@ namespace Tools
            Actions actions = new Actions(driver);
             try
             {
+                /*
+                 if1 |
+                     | if2 |
+                     |     | if3 |
+                           |     |
+                                 |
+                 */
                 switch (Cif1)
                 {
                     case 1:
@@ -76,7 +86,7 @@ namespace Tools
                         break;
                         
                     //////////////////////////////////////////////////
-                    case 2:
+                    case 2: // updateing 
                         switch (Cif2)
                         {
                             case 1:
@@ -101,7 +111,7 @@ namespace Tools
                 Console.Clear();
             }
         }
-        public void QuitChrom()
+        public void QuitChrom() // check colse
         {
             while (QuitCH == false)
             {
@@ -109,10 +119,9 @@ namespace Tools
                 break;
             }
         }
-
-        private void sleept()
+        private void sleept() // random time sleep
         {
-             Random rnd = new Random();
+            Random rnd = new Random();
             int trd1 = rnd.Next(500,8000);
             int trd2 = rnd.Next(500,2000);
             int rd = (trd1 + trd2) /2; 

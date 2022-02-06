@@ -13,15 +13,14 @@ namespace Tools
     {
         static void Main(string[] args)
         {
-            Console.OutputEncoding = Encoding.UTF8;
-            Console.SetWindowSize(35, 10);
+            Console.OutputEncoding = Encoding.UTF8; // VietNamese
+            Console.SetWindowSize(35, 10); // set size
            
             systemx();
             void systemx()
             {
                 Form form = new Form();
-                form.show(1,0);
-
+                form.show(1,0); 
                 try
                 {
                     int if1 = Convert.ToInt32(Console.ReadLine());
@@ -32,8 +31,10 @@ namespace Tools
                     }
                     if (if1 ==2)
                     {
+                        // Continue to be updated later
                         int if2 = Convert.ToInt32(Console.ReadLine());
                     }
+
                     systemx();
                 }
                 catch (Exception)
@@ -58,30 +59,40 @@ namespace Tools
                 cmd.CommandText = "SELECT tk.tk, tk.mk FROM tk";
                 cmd.ExecuteNonQuery();
                 OleDbDataReader reader = cmd.ExecuteReader();
+
                 while (reader.Read())
                 {
                     string tk = reader.GetString(0);
                     string mk = reader.GetString(1);
-
                     Thread t = new Thread(() =>
                     {
+                        /*
+                         data (3  data)
+
+                       | |data -> |
+             check exit| |data -> | Perform functions
+                       | |data -> |
+
+                         */
                         SystemChrom dt = new SystemChrom();
                         Thread y2 = new Thread(() =>
                         {
+                            //get data and login
                             dt.Usename = tk; dt.Password = mk;
                             dt.login();
+                            //Perform functionality ( key down )
                             dt.Cif11 = if1; dt.Cif21 = if2;
                             dt.AcctionChrom();
-                            
                         });
                         y2.Start();
+                        //check exit
                         while (true)
                         {
                             if (t1 == 1)
                             {
                                 dt.QuitCH1 = false;
                                 dt.QuitChrom();
-                                t1 = 0;
+                                t1 = 0; //Returns like old (* Important)
                             }
                         }
                     }); t.Start();
@@ -90,9 +101,7 @@ namespace Tools
                 con.Close();
                 Console.Clear();
                 Console.Write("Enter để thoát all\n\t-> ");
-                Console.ReadLine();
-                t1 = 1;
-                
+                Console.ReadLine(); t1 = 1;
             }
             catch (Exception)
             {
