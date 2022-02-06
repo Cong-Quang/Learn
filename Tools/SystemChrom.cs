@@ -71,7 +71,7 @@ namespace Tools
             Random rnd = new Random();
             int trd1 = rnd.Next(500,8000);
             int trd2 = rnd.Next(500,2000);
-            int rd = (trd1 + trd2) / 2;
+            int rd = (trd1 + trd2) /rnd.Next(10); 
             if (rd  < 500)
             {
                 rd += 500;
