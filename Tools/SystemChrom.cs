@@ -38,11 +38,10 @@ namespace Tools
                         Console.WriteLine("-> Enter để thoát");
                         while (true)
                         {
-                            actions
+                           actions
                                 .KeyDown(Keys.Down)
                                 .Build()
                                 .Perform();
-
                             sleept();
                         }
                     case 2:
@@ -70,8 +69,10 @@ namespace Tools
         private void sleept()
         {
             Random rnd = new Random();
-            int trd = rnd.Next(2100);
-            Thread.Sleep(trd);
+            int trd1 = rnd.Next(2100);
+            int trd2 = rnd.Next(2200);
+            Console.WriteLine((trd1 + trd2) / 2);
+            Thread.Sleep((trd1+trd2)/2);
         }
 
     }

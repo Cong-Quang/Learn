@@ -68,9 +68,7 @@ namespace Tools
                     string mk = reader.GetString(1);
                     Thread t = new Thread(() =>
                     {
-                        
                         dt.kq(tk, mk,if1,if2);
-
                     }); t.Start();
                 }
                 con.Close();
