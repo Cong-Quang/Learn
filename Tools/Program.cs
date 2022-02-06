@@ -70,9 +70,7 @@ namespace Tools
                         SystemChrom dt = new SystemChrom();
                         dt.Usename = tk; dt.Password = mk;
                         dt.login();
-
-
-
+                        dt.kq(1,0);
                     }); t.Start();
                 }
                 con.Close();

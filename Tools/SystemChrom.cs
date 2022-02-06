@@ -21,7 +21,14 @@ namespace Tools
         {
             try
             {
-                
+                switch (if1)
+                {
+                    case 1:
+                        AcctionChrom();
+                        break;
+                    default:
+                        break;
+                }
             }
             catch (Exception)
             {
@@ -52,25 +59,28 @@ namespace Tools
         public void AcctionChrom()
         {
 
-           /* Actions actions = new Actions(driver);
+           Actions actions = new Actions(driver);
             try
             {
                 actions.SendKeys(Keys.Escape);
-                actions
-                    .KeyDown(Keys.Down)
-                    .Build()
-                    .Perform();
-                sleept();
+                while (true)
+                {
+                    actions
+                        .KeyDown(Keys.Down)
+                        .Build()
+                        .Perform();
+                    sleept();
+
+                }
             }
             catch (Exception)
             {
-
                 throw;
-            }*/
+            }
         }
         public void QuitChrom()
         {
-           // driver.Quit();
+           driver.Quit();
         }
 
         private void sleept()
