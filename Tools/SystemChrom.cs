@@ -32,7 +32,10 @@ namespace Tools
                        
                         while (true)
                         {
-                            actions.KeyDown(Keys.Down).Build().Perform();
+                            actions
+                                .KeyDown(Keys.Down)
+                                .Build()
+                                .Perform();
 
                             sleept();
                         }
