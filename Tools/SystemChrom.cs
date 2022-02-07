@@ -25,6 +25,9 @@ namespace Tools
         public int Cif21 { get => Cif2; set => Cif2 = value; }
         public bool QuitCH1 { get => QuitCH; set => QuitCH = value; }
 
+
+
+
         public void login()
         {
             //open chrom
