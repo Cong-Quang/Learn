@@ -15,7 +15,6 @@ namespace Tools
         {
             Console.OutputEncoding = Encoding.UTF8; // VietNamese
             Console.SetWindowSize(35, 10); // set console size
-           
             systemx();
             void systemx()
             {
@@ -24,7 +23,7 @@ namespace Tools
                 try
                 {
                     int if1 = Convert.ToInt32(Console.ReadLine());
-
+                    Thread.Sleep(TimeSpan.FromSeconds(1));
                     if (if1 == 1)
                     {
                         SLdatabase(1,0);
@@ -34,7 +33,6 @@ namespace Tools
                         // Continue to be updated later
                         int if2 = Convert.ToInt32(Console.ReadLine());
                     }
-
                     systemx();
                 }
                 catch (Exception)
@@ -44,7 +42,6 @@ namespace Tools
                     systemx();
                 }
             }
-
         }
         static void SLdatabase(int if1, int if2)
         {
@@ -59,24 +56,21 @@ namespace Tools
                 cmd.CommandText = "SELECT tk.tk, tk.mk FROM tk";
                 cmd.ExecuteNonQuery();
                 OleDbDataReader reader = cmd.ExecuteReader();
-
+                        /*
+                      | |data -> |
+           check exit | |data -> | Perform functions
+                      | |data -> |
+                        */
                 while (reader.Read())
                 {
                     string tk = reader.GetString(0);
                     string mk = reader.GetString(1);
                     Thread t = new Thread(() =>
                     {
-                        /*
-                         data (3  data)
-
-                       | |data -> |
-             check exit| |data -> | Perform functions
-                       | |data -> |
-
-                         */
                         SystemChrom dt = new SystemChrom();
                         Thread y2 = new Thread(() =>
                         {
+                            Thread.Sleep(1000);
                             //get data and login
                             dt.Usename = tk; dt.Password = mk;
                             dt.login();
@@ -88,15 +82,16 @@ namespace Tools
                         //check exit
                         while (true)
                         {
+                            Thread.Sleep(1000); //create time off so as not to spill data
                             if (t1 == 1)
                             {
+                                
                                 dt.QuitCH1 = false;
                                 dt.QuitChrom();
                                 t1 = 0; //Returns like old (* Important)
                             }
                         }
                     }); t.Start();
-
                 }
                 con.Close();
                 Console.Clear();
