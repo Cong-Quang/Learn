@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using System.Drawing;
@@ -36,7 +36,7 @@ namespace Tools
             driver = new ChromeDriver(driverService, new ChromeOptions());
             //set size and set position
             driver.Manage().Window.Size = new Size(220, 480);
-            //driver.Manage().Window.Position = new Point(0, 0);
+            driver.Manage().Window.Position = new Point(0, 0);
             try
             {   //login
                 driver.Navigate().GoToUrl("https://www.facebook.com/");
@@ -54,6 +54,7 @@ namespace Tools
         {
 
            Actions actions = new Actions(driver);
+           
             try
             {
                 switch (Cif1)
@@ -78,6 +79,7 @@ namespace Tools
                                     .Build()
                                     .Perform();
                                     sleept();
+                                    Console.WriteLine("1");
                                 }
                                 catch (Exception)
                                 {
@@ -116,12 +118,13 @@ namespace Tools
         }
         public void QuitChrom() // check close
         {
-            while (QuitCH == false)
+            //announcement
+            if (QuitCH == false)
             {
                 driver.Close();
-                break;
             }
         }
+    
         private void sleept() // random time sleep
         {
             Random rnd = new Random();
