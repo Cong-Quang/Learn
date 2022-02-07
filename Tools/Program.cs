@@ -34,7 +34,6 @@ namespace Tools
                         // Continue to be updated later
                         int if2 = Convert.ToInt32(Console.ReadLine());
                     }
-
                     systemx();
                 }
                 catch (Exception)
@@ -59,24 +58,21 @@ namespace Tools
                 cmd.CommandText = "SELECT tk.tk, tk.mk FROM tk";
                 cmd.ExecuteNonQuery();
                 OleDbDataReader reader = cmd.ExecuteReader();
-
+                        /*
+                      | |data -> |
+            check exit| |data -> | Perform functions
+                      | |data -> |
+                        */
                 while (reader.Read())
                 {
                     string tk = reader.GetString(0);
                     string mk = reader.GetString(1);
                     Thread t = new Thread(() =>
                     {
-                        /*
-                         data (3  data)
-
-                       | |data -> |
-             check exit| |data -> | Perform functions
-                       | |data -> |
-
-                         */
                         SystemChrom dt = new SystemChrom();
                         Thread y2 = new Thread(() =>
                         {
+                            Thread.Sleep(1000);
                             //get data and login
                             dt.Usename = tk; dt.Password = mk;
                             dt.login();
@@ -88,6 +84,7 @@ namespace Tools
                         //check exit
                         while (true)
                         {
+                            Thread.Sleep(100); //create time off so as not to spill data
                             if (t1 == 1)
                             {
                                 dt.QuitCH1 = false;
@@ -96,7 +93,6 @@ namespace Tools
                             }
                         }
                     }); t.Start();
-
                 }
                 con.Close();
                 Console.Clear();

@@ -30,14 +30,13 @@ namespace Tools
 
         public void login()
         {
-            //open chrom
+            //open chrome
             var driverService = ChromeDriverService.CreateDefaultService();
             driverService.HideCommandPromptWindow = true;
             driver = new ChromeDriver(driverService, new ChromeOptions());
-            
             //set size and set position
             driver.Manage().Window.Size = new Size(220, 480);
-            driver.Manage().Window.Position = new Point(0, 0);
+            //driver.Manage().Window.Position = new Point(0, 0);
             try
             {   //login
                 driver.Navigate().GoToUrl("https://www.facebook.com/");
@@ -82,7 +81,8 @@ namespace Tools
                                 }
                                 catch (Exception)
                                 {
-
+                                    QuitCH = true;
+                                    QuitChrom();
                                 }
                             } while (QuitCH == true);
                         }
