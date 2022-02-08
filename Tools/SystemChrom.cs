@@ -11,13 +11,12 @@ namespace Tools
     internal class SystemChrom
     {
         IWebDriver driver;
-
         string usename;
         string password;
         bool QuitCH = true;
         int Cif1;
         int Cif2;
-       
+
         public string Usename { get => usename; set => usename = value; }
         public string Password { get => password; set => password = value; }
         public int Cif11 { get => Cif1; set => Cif1 = value; }
