@@ -83,7 +83,15 @@ namespace Tools
                 cmd.CommandText = "SELECT tk.tk, tk.mk FROM tk";
                 cmd.ExecuteNonQuery();
                 OleDbDataReader reader = cmd.ExecuteReader();
-
+                        /*
+                      | |data -> |
+<<<<<<< HEAD
+           check exit | |data -> | Perform functions
+=======
+            check exit| |data -> | Perform functions
+>>>>>>> b98fb933598cf4b6db614a41db2b66a586a1845f
+                      | |data -> |
+                        */
                 while (reader.Read())
                 {
                     string tk = reader.GetString(0);
@@ -105,6 +113,8 @@ namespace Tools
                         //check exit
                         while (true)
                         {
+                            Thread.Sleep(1000); //create time off so as not to spill data
+                            Thread.Sleep(100); //create time off so as not to spill data
                             if (t1 == 1)
                             {
                                 
