@@ -85,11 +85,7 @@ namespace Tools
                 OleDbDataReader reader = cmd.ExecuteReader();
                         /*
                       | |data -> |
-<<<<<<< HEAD
            check exit | |data -> | Perform functions
-=======
-            check exit| |data -> | Perform functions
->>>>>>> b98fb933598cf4b6db614a41db2b66a586a1845f
                       | |data -> |
                         */
                 while (reader.Read())
