@@ -21,27 +21,8 @@ namespace Tools
 
             Console.OutputEncoding = Encoding.UTF8; // VietNamese
             Console.SetWindowSize(35, 10); // set console size
-
-            IWebDriver driver;
-            var driverService = ChromeDriverService.CreateDefaultService();
-            driverService.HideCommandPromptWindow = true;
-            driver = new ChromeDriver(driverService, new ChromeOptions());
-            driver.Navigate().GoToUrl("https://www.facebook.com/");
-            driver.FindElement(By.Id("email")).SendKeys("poopooi01");
-            driver.FindElement(By.Id("pass")).SendKeys("0925938662az3" + Keys.Return);
-           
-            Console.WriteLine("bat dau");
-            for (int i = 0; i < 50; i++)
-            {
-                Thread.Sleep(TimeSpan.FromSeconds(1));
-                var a = driver.FindElement(By.XPath("//div[@aria-label='Thích']"));
-                if (a != null)
-                {
-                    Console.WriteLine("x");
-                }
-            }
-            Console.Read();
-            driver.Close();
+            // test find button like
+            systemx();
             // systemx();
             void systemx()
             {

@@ -35,7 +35,7 @@ namespace Tools
             driverService.HideCommandPromptWindow = true;
             driver = new ChromeDriver(driverService, new ChromeOptions());
             //set size and set position
-            driver.Manage().Window.Size = new Size(220, 480);
+            driver.Manage().Window.Size = new Size(220, 700);
             driver.Manage().Window.Position = new Point(0, 0);
             try
             {   //login
@@ -78,8 +78,9 @@ namespace Tools
                                     .KeyDown(Keys.Down)
                                     .Build()
                                     .Perform();
-                                    sleept();
-                                    Console.WriteLine("1");
+                                    RND(1);
+                                    RND(2);
+                                    
                                 }
                                 catch (Exception)
                                 {
@@ -125,18 +126,37 @@ namespace Tools
             }
         }
     
-        private void sleept() // random time sleep
+        private void RND(int tSl) // random time sleep
         {
             Random rnd = new Random();
-            int trd1 = rnd.Next(500,8000);
-            int trd2 = rnd.Next(500,2000);
-            int rd = (trd1 + trd2) /2; 
-            if (rd  < 500)
+            if (tSl == 1)
             {
-                 rd += 500;
+                int trd1 = rnd.Next(500, 8000);
+                int trd2 = rnd.Next(500, 2000);
+                int rd = (trd1 + trd2) / 2;
+                if (rd < 500)
+                {
+                    rd += 500;
+                }
+                Thread.Sleep(rd);
             }
-            Thread.Sleep(rd);
+            if (tSl == 2)
+            {
+                int trd1 = rnd.Next(1, 5);
+                var a = driver.FindElement(By.XPath("//div[@aria-label='Thích']"));
+                if (a != null)
+                {
+                    if (trd1 == 1)
+                    {
+                        a.Click();
+                        Console.WriteLine("p");
+                    }
+                    else
+                    {
+                        a.Clear();
+                    }
+                }
+            }
         }
-
     }
 }
