@@ -25,9 +25,6 @@ namespace Tools
         public bool QuitCH1 { get => QuitCH; set => QuitCH = value; }
         // driver.find_element_by_xpath("//div[@aria-label='Any time']
         //input[@class ='']
-
-
-
         public void login()
         {
             //open chrome
@@ -35,8 +32,7 @@ namespace Tools
             driverService.HideCommandPromptWindow = true;
             driver = new ChromeDriver(driverService, new ChromeOptions());
             //set size and set position
-            driver.Manage().Window.Size = new Size(220, 700);
-            driver.Manage().Window.Position = new Point(0, 0);
+            driver.Manage().Window.Size = new Size(220, 800);
             try
             {   //login
                 driver.Navigate().GoToUrl("https://www.facebook.com/");
@@ -46,15 +42,12 @@ namespace Tools
             catch (Exception)
             {
                 Console.Clear();
-                Console.WriteLine("Lỗi kết nối");
+                Console.WriteLine("Lỗi kết nối tới Facebook");
             }
         }
-
         public void AcctionChrom()
         {
-
            Actions actions = new Actions(driver);
-           
             try
             {
                 switch (Cif1)
@@ -80,7 +73,6 @@ namespace Tools
                                     .Perform();
                                     RND(1);
                                     RND(2);
-                                    
                                 }
                                 catch (Exception)
                                 {
@@ -90,7 +82,6 @@ namespace Tools
                             } while (QuitCH == true);
                         }
                         break;
-                        
                     //////////////////////////////////////////////////
                     case 2: // updateing 
                         switch (Cif2)
@@ -125,7 +116,6 @@ namespace Tools
                 driver.Close();
             }
         }
-    
         private void RND(int tSl) // random time sleep
         {
             Random rnd = new Random();
@@ -142,7 +132,7 @@ namespace Tools
             }
             if (tSl == 2)
             {
-                int trd1 = rnd.Next(1, 5);
+                int trd1 = rnd.Next(1, 10);
                 var a = driver.FindElement(By.XPath("//div[@aria-label='Thích']"));
                 if (a != null)
                 {

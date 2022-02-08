@@ -18,23 +18,19 @@ namespace Tools
     {
         static void Main(string[] args)
         {
-
             Console.OutputEncoding = Encoding.UTF8; // VietNamese
             Console.SetWindowSize(35, 10); // set console size
-            // test find button like
             systemx();
-            // systemx();
             void systemx()
             {
-                Form form = new Form();
-                form.show(1,0); 
+                form(1,0); 
                 try
                 {
                     int if1 = Convert.ToInt32(Console.ReadLine());
                     Thread.Sleep(TimeSpan.FromSeconds(1));
                     if (if1 == 1)
                     {
-                        SLdatabase(1,0);
+                        SLdatabase(1, 0);
                     }
                     if (if1 ==2)
                     {
@@ -45,7 +41,7 @@ namespace Tools
                 }
                 catch (Exception)
                 {
-                    form.show(10, 0);
+                    form(10,0);
                     Console.ReadLine();
                     systemx();
                 }
@@ -91,10 +87,8 @@ namespace Tools
                         while (true)
                         {
                             Thread.Sleep(1000); //create time off so as not to spill data
-                            Thread.Sleep(100); //create time off so as not to spill data
                             if (t1 == 1)
                             {
-                                
                                 dt.QuitCH1 = false;
                                 dt.QuitChrom();
                                 t1 = 0; //Returns like old (* Important)
@@ -115,5 +109,68 @@ namespace Tools
                 Console.WriteLine("-----------------------------------");
             }
         }
+        static void form(int if1, int if2)
+        {
+            Console.Title = "Tools";
+            switch (if1)
+            {
+                case 1:
+                    Console.Clear();
+                    Console.WriteLine("-----------------------------------");
+                    Console.WriteLine("| 1: Auto Lướt and random like    |");
+                    Console.WriteLine("| 2: Auto report                  |");
+                    Console.WriteLine("| 3:                              |");
+                    Console.WriteLine("-----------------------------------");
+                    Console.Write("\t-> ");
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.WriteLine("-----------------------------------");
+                    Console.WriteLine("| 1:                              |");
+                    Console.WriteLine("| 2:                              |");
+                    Console.WriteLine("| 3:                              |");
+                    Console.WriteLine("| 4:                              |");
+                    Console.WriteLine("| 5:                              |");
+                    Console.WriteLine("| 6:                              |");
+                    Console.WriteLine("-----------------------------------");
+                    Console.Write("\t-> ");
+                    switch (if2)
+                    {
+                        case 1:
+                            Console.Clear();
+
+                            break;
+                        case 2:
+                            Console.Clear();
+                            break;
+                        case 3:
+                            Console.Clear();
+                            break;
+                        case 4:
+                            Console.Clear();
+                            break;
+                        case 5:
+                            Console.Clear();
+                            break;
+                        case 6:
+                            Console.Clear();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case 10:
+                    Console.Clear();
+                    Console.WriteLine("-----------------------------------");
+                    Console.WriteLine("|               Lỗi               |");
+                    Console.WriteLine("-----------------------------------");
+                    Console.Write("Enter ");
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
     }
 }
