@@ -85,7 +85,7 @@ namespace Tools
                         });
                         y2.Start();
                         //check exit
-                        while (true)
+                        while (t1 != 1)
                         {
                             Thread.Sleep(1000); //create time off so as not to spill data
                             if (t1 == 1)
@@ -93,8 +93,10 @@ namespace Tools
                                 dt.QuitCH1 = false;
                                 dt.QuitChrom();
                                 t1 = 0; //Returns like old (* Important)
+                                break;
                             }
                         }
+                        return;
                     }); t.Start();
                 }
                 con.Close();

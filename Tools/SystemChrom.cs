@@ -116,7 +116,7 @@ namespace Tools
                 driver.Close();
             }
         }
-        private void RND(int tSl) // random time sleep
+        private void RND(int tSl) // random
         {
             Random rnd = new Random();
             if (tSl == 1)
@@ -132,7 +132,7 @@ namespace Tools
             }
             if (tSl == 2)
             {
-                int trd1 = rnd.Next(1, 10);
+                int trd1 = rnd.Next(1, 4);
                 var a = driver.FindElement(By.XPath("//div[@aria-label='Thích']"));
                 if (a != null)
                 {
@@ -140,11 +140,8 @@ namespace Tools
                     {
                         a.Click();
                     }
-                    else
-                    {
-                        a.Clear();
-                    }
                 }
+                a.Clear();
             }
         }
     }
