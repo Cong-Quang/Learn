@@ -139,7 +139,6 @@ namespace Tools
                     if (trd1 == 1)
                     {
                         a.Click();
-                        Console.WriteLine("p");
                     }
                     else
                     {
