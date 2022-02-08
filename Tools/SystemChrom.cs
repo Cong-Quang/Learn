@@ -4,7 +4,6 @@ using OpenQA.Selenium.Interactions;
 using System.Drawing;
 using System.Threading;
 using System;
-using NUnit.Framework;
 
 namespace Tools
 
@@ -24,7 +23,8 @@ namespace Tools
         public int Cif11 { get => Cif1; set => Cif1 = value; }
         public int Cif21 { get => Cif2; set => Cif2 = value; }
         public bool QuitCH1 { get => QuitCH; set => QuitCH = value; }
-
+        // driver.find_element_by_xpath("//div[@aria-label='Any time']
+        //input[@class ='']
 
 
 
