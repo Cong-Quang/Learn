@@ -31,7 +31,9 @@ namespace Tools
             driverService.HideCommandPromptWindow = true;
             driver = new ChromeDriver(driverService, new ChromeOptions());
             //set size and set position
-            driver.Manage().Window.Size = new Size(220, 800);
+            driver.Manage().Window.Size = new Size(220, 200);
+            driver.Manage().Window.Position = new Point(10, 20);
+
             try
             {   //login
                 driver.Navigate().GoToUrl("https://www.facebook.com/");
@@ -68,15 +70,14 @@ namespace Tools
                                 {
                                     actions
                                     .KeyDown(Keys.Down)
-                                    .Build()
+                                    .Build()    
                                     .Perform();
-                                    RND(1);
-                                    RND(2);
+                                    Sleep();
                                 }
                                 catch (Exception)
                                 {
                                     QuitCH = true;
-                                    QuitChrom();
+                                    CloseChrom();
                                 }
                             } while (QuitCH == true);
                         }
@@ -107,7 +108,7 @@ namespace Tools
                 Console.Clear();
             }
         }
-        public void QuitChrom() // check close
+        public void CloseChrom() // check close
         {
             //announcement
             if (QuitCH == false)
@@ -115,20 +116,9 @@ namespace Tools
                 driver.Close();
             }
         }
-        private void RND(int tSl) // random
+        private void function(int tSl)
         {
             Random rnd = new Random();
-            if (tSl == 1)
-            {
-                int trd1 = rnd.Next(500, 8000);
-                int trd2 = rnd.Next(500, 2000);
-                int rd = (trd1 + trd2) / 2;
-                if (rd < 500)
-                {
-                    rd += 500;
-                }
-                Thread.Sleep(rd);
-            }
             if (tSl == 2)
             {
                 int trd1 = rnd.Next(1, 10);
@@ -142,6 +132,18 @@ namespace Tools
                 }
                 a.Clear();
             }
+        }
+        private void Sleep() // random
+        {
+            Random rnd = new Random();
+            int trd1 = rnd.Next(500, 8000);
+            int trd2 = rnd.Next(500, 2000);
+            int rd = (trd1 + trd2) / 2;
+            if (rd < 500)
+            {
+                rd += 500;
+            }
+            Thread.Sleep(rd);
         }
     }
 }

@@ -91,7 +91,7 @@ namespace Tools
                             if (t1 == 1)
                             {
                                 dt.QuitCH1 = false;
-                                dt.QuitChrom();
+                                dt.CloseChrom();
                                 t1 = 0; //Returns like old (* Important)
                                 break;
                             }
